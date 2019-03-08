@@ -1,4 +1,6 @@
-# 使い方
+# LUSFファイルからヘッダとジャーナルを切り出すためのツール
+
+## 使い方
 `test.lusf`ファイルのヘッダとジャーナルを切り出したい。
 この時は、
 ```
@@ -15,7 +17,7 @@ actual data region size = 9999872
 actual journal region size = 391168
 actual journal region size ratio = 0.03764474008376448
 
-$ kanils Put --storage test.lusf --key 1 --value ������
+$ kanils Put --storage test.lusf --key 1 --value ������
 [new] put key=1, value=🦀
 
 $ kanils Header --storage test.lusf
