@@ -6,6 +6,7 @@ use std::fs::File;
 use std::io::{Read, Write};
 use std::path::Path;
 
+// cf. https://github.com/frugalos/cannyls/wiki/Storage-Format
 fn header_size(lusf_file_name: String) -> u16 {
     let mut buffer: Vec<u8> = vec![0; 4 * 2]; // 32bit * 2
     let mut file = track_try_unwrap!(track_any_err!(File::open(lusf_file_name)));
@@ -17,6 +18,7 @@ fn header_size(lusf_file_name: String) -> u16 {
     u16::from_be_bytes(two_bytes)
 }
 
+// cf. https://github.com/frugalos/cannyls/wiki/Storage-Format
 fn journal_size(lusf_file_name: String) -> u64 {
     let mut buffer: Vec<u8> = vec![0; 4 * 9]; // 32bit * 9
     let mut file = track_try_unwrap!(track_any_err!(File::open(lusf_file_name)));
