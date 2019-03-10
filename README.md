@@ -1,5 +1,8 @@
-# 使い方
-`test.lusf`ファイルのヘッダとジャーナルを切り出したい。
+LUSFファイルからヘッダとジャーナルを切り出すためのツール
+
+## 使い方
+`test.lusf`ファイルのヘッダとジャーナルを切り出したいとする。
+
 この時は、
 ```
 cargo run test.lusf output.lusf
@@ -15,7 +18,7 @@ actual data region size = 9999872
 actual journal region size = 391168
 actual journal region size ratio = 0.03764474008376448
 
-$ kanils Put --storage test.lusf --key 1 --value ������
+$ kanils Put --storage test.lusf --key 1 --value 🦀
 [new] put key=1, value=🦀
 
 $ kanils Header --storage test.lusf
@@ -50,4 +53,20 @@ header =>
   data region size = 9999872
   storage header size => 512
   storage total size = 10391552
+  
+$ kanils Journal --storage test.lusf
+journal [unreleased head] position = 0
+journal [head] position = 0
+journal [tail] position = 28
+<journal entries>
+JournalEntry { start: Address(0), record: Put(LumpId("00000000000000000000000000000001"), DataPortion { start: Address(0), len: 1 }) }
+</journal entries>
+
+$ kanils Journal --storage output.lusf
+journal [unreleased head] position = 0
+journal [head] position = 0
+journal [tail] position = 28
+<journal entries>
+JournalEntry { start: Address(0), record: Put(LumpId("00000000000000000000000000000001"), DataPortion { start: Address(0), len: 1 }) }
+</journal entries>  
 ```
