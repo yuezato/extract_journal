@@ -6,4 +6,3 @@ edition = "2018"
 
 [dependencies]
 trackable = "0.2"
-cannyls = "0.9"
